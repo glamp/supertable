@@ -18,19 +18,20 @@ export default class CustomHeader extends Component {
     }, 0);
   }
 
-  pinHistogram = (hist) => {
+  pinHistogram = () => {
     this.props.updateHeaderHeight(100);
-    this.setState({ hist });
+    this.setState({ hist: true});
   }
 
   getHist = () => {
+    const { hist } = this.buildHistogram();
     if (this.state.hist) {
       return (
         <div>
           <div onClick={this.removeHist} className="text-right" style={{ fontSize: 8 }}>
             x
           </div>
-          <container className="hist-holder">{this.state.hist}</container>
+          <container className="hist-holder">{hist}</container>
         </div>
       );
     }
@@ -41,7 +42,7 @@ export default class CustomHeader extends Component {
     return _.orderBy(x)[Math.round(q * x.length)];
   }
 
-  getHoverOver() {
+  buildHistogram() {
     let histData, infoTable;
     if (_.isNumber(this.props.data[0])) {
       histData = d3.histogram()(this.props.data).map((h) => h.length);;
@@ -57,7 +58,7 @@ export default class CustomHeader extends Component {
           </tr>
           <tr>
             <td>Mean</td>
-            <td>{_.mean(this.props.data)}</td>
+            <td>{_.round(_.mean(this.props.data), 2)}</td>
           </tr>
           <tr>
             <td>75%</td>
@@ -92,7 +93,14 @@ export default class CustomHeader extends Component {
         <SparklinesBars />
       </Sparklines>
     );
+    return {
+      hist,
+      infoTable
+    };
+  }
 
+  getHoverOver() {
+    const { hist, infoTable } = this.buildHistogram();
     const position = {
       position: 'absolute',
       top: 165,
@@ -127,7 +135,7 @@ export default class CustomHeader extends Component {
         <container>
           {this.props.children}
           <br />
-          <span onClick={() => this.setState({ hover: !this.state.hover})}>
+          <span className="column-header" onClick={() => this.setState({ hover: !this.state.hover})}>
             {this.props.label}
           </span>
           {this.getHist()}

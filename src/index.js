@@ -32,8 +32,17 @@ export default class extends Component {
     const visibleData = this.props.data.filter((row) => {
       const matches = _.toPairs(filter).map((item) => {
         const col = item[0];
-        const querystring = item[1];
-        return row[col].toString().toLowerCase().indexOf(querystring) > -1 ? 1 : 0;
+        const querystrings = item[1].split(',').filter(x => x);
+        if (querystrings.length===0) {
+          return 1
+        }
+
+        for(var i=0; i<querystrings.length; i++) {
+          if (row[col].toString().toLowerCase().indexOf(querystrings[i]) > -1) {
+            return 1;
+          }
+        }
+        return 0;
       });
       return _.sum(matches)===matches.length;
     });

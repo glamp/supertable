@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import faker from 'faker';
 import _ from 'lodash';
 
-import Example from '../../src'
+import SuperTable from '../../src'
 import './index.css';
 
 class Demo extends Component {
@@ -43,24 +43,26 @@ class Demo extends Component {
   }
 
   render() {
-    return <div>
-      <h2>html-grid</h2>
-      <h4>
-        {
-          [1000, 10000, 100000, 1000000].map((i) => {
-            return (
-              <span>
-                <a href={`/${i}`}>
-                  {this.formatNumber(i)}
-                </a>
-                {' '}
-              </span>
-            );
-          })
-        }
-      </h4>
-      <Example data={this.getData()} />
-    </div>
+    return (
+      <div>
+        <h2>SuperTable</h2>
+        <h4>
+          {
+            [100, 1000, 10000, 100000].map((i) => {
+              return (
+                <span>
+                  <a href={`/${i}`}>
+                    {this.formatNumber(i)}
+                  </a>
+                  {' '}
+                </span>
+              );
+            })
+          }
+        </h4>
+        <SuperTable data={this.getData()} />
+      </div>
+    );
   }
 }
 
