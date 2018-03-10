@@ -19,6 +19,11 @@ export default class extends Component {
     this.setState({ visibleData: this.props.data });
   }
 
+  sortByColumn = (col, direction) => {
+    direction = direction || 'asc';
+    this.setState({ visibleData: _.orderBy(this.state.visibleData, col, direction) });
+  }
+
   updateFilter = (col, q) => {
     q = q.toLowerCase();
     let { filter } = this.state;
@@ -93,11 +98,17 @@ export default class extends Component {
                         updateHeaderHeight={(newHeight) => this.setState({ headerHeight: newHeight })}
                         left={i * 200 - 200}
                         data={_.map(this.state.visibleData, columnName)}>
-                        <input
-                          type="text"
-                          value={this.state.filter[columnName] || ''}
-                          onChange={evt => this.updateFilter(columnName, evt.target.value)}
-                        />
+                        <div style={{ display: 'inline-block'}}>
+                          <input
+                            type="text"
+                            value={this.state.filter[columnName] || ''}
+                            onChange={evt => this.updateFilter(columnName, evt.target.value)}
+                          />
+                          <div style={{ display: 'inline-block'}}>
+                            <span className="control" onClick={() => this.sortByColumn(columnName)}>{'<'}</span>
+                            <span className="control" onClick={() => this.sortByColumn(columnName, 'desc')}>{'>'}</span>
+                          </div>
+                        </div>
                       </CustomHeader>
                     );
                   }}

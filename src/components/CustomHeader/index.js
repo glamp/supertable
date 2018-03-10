@@ -103,7 +103,7 @@ export default class CustomHeader extends Component {
     const { hist, infoTable } = this.buildHistogram();
     const position = {
       position: 'absolute',
-      top: 165,
+      top: 110,
       left: this.props.left || 256,
     };
 
@@ -115,10 +115,10 @@ export default class CustomHeader extends Component {
               <div className="control" style={{ width: 220 }}>
                 <span>{this.props.label}</span>
               </div>
-              <div className="control text-right">
-                <span onClick={() => this.pinHistogram(hist)}>+</span>
+              <div className="text-right" style={{ display: 'inline-block' }}>
+                <span className="control" onClick={() => this.pinHistogram(hist)}>+</span>
                 {' '}
-                <span onClick={() => this.setState({ hover: false })}>x</span>
+                <span className="control" onClick={() => this.setState({ hover: false })}>x</span>
               </div>
             </div>
           </div>

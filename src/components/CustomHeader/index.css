@@ -51,6 +51,12 @@
 
 .control {
   display: inline-block;
+  cursor: pointer;
+}
+
+.control:hover {
+  color: white;
+  background-color: #444;
 }
 
 .modal-content {
