@@ -1,0 +1,49 @@
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+
+.ReactVirtualized__Table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+
+thead > tr, .ReactVirtualized__Table__headerRow {
+    text-align: left;
+    padding-right: 20px;
+    vertical-align: top;
+    border-bottom: 1px solid grey;
+}
+th,
+.ReactVirtualized__Table__headerColumn,
+.ReactVirtualized__Table__rowColumn {
+  padding: 10px 15px;
+}
+
+tr,
+.ReactVirtualized__Table__row {
+  border-top: 1px solid grey;
+}
+
+.ReactVirtualized__Table__row:nth-child(odd) {
+  background: lightgrey;
+}
+
+.ReactVirtualized__Table__headerColumn {
+  text-align: left;
+  padding: 10px 15px;
+  height: 100%;
+  overflow: none;
+  font-size: 13px;
+  font-weight: bold;
+  color: #444;
+  border-bottom: 1px solid #dadadc;
+  cursor: default;
+  white-space: nowrap;
+}
+

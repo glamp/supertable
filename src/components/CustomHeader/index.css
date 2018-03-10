@@ -1,0 +1,50 @@
+/* The Modal (background) */
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  height: 100%; /* Full height */
+  width: 100%;
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-xsmall {
+  width: 250px;
+}
+
+.modal-small {
+  width: 50%;
+}
+
+.modal-medium {
+  width: 75%;
+}
+
+.modal-large {
+  width: 100%;
+}
+
+.modal-header {
+  border-bottom: 1px solid lightgrey;
+  font-size: 80%;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.control {
+  display: inline-block;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 5px;
+  border: 1px solid #888;
+}

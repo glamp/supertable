@@ -1,16 +1,14 @@
 # html-grid
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+- Search
+- Filter
+- Sort
+- Copy/export (tab delimited for Excel)
+- "Header Sparklines"
+- Header summary stats
+- Sampling
 
-Describe html-grid here.
+https://github.com/schrodinger/fixed-data-table-2
+https://github.com/bvaughn/react-virtualized
+https://bvaughn.github.io/react-virtualized/#/components/Table
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
