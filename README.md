@@ -5,7 +5,7 @@
 - [x] Sort
 - [x] "Header Sparklines"
 - [x] Header summary stats
-- [ ] Copy/export (tab delimited for Excel)
+- [x] Copy/export (tab delimited for Excel)
 - [ ] Sampling
 
 https://github.com/schrodinger/fixed-data-table-2

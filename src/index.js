@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Column, Table } from 'react-virtualized';
 import _ from 'lodash';
 import CustomHeader from './components/CustomHeader';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import 'react-virtualized/styles.css';
 import './index.css';
 
@@ -70,12 +71,24 @@ export default class extends Component {
     return y.join('');
   }
 
+  jsonToTabDelimited(data) {
+    data = data.slice(0, 1000);
+    const headers = _.keys(data[0]);
+    data = data.map(row => _.values(row).map(i => i.toString().replace('\t', ' ')).join('\t')).join('\n');
+    return headers.join('\t') + '\n' + data;
+  }
+
   render() {
 
     const columns = _.keys(this.props.data[0]);
 
     return (
       <div>
+        <div className="text-right">
+          <CopyToClipboard text={this.jsonToTabDelimited(this.state.visibleData)}>
+            <button>📋</button>
+          </CopyToClipboard>
+        </div>
         <Table
           width={window.innerWidth - 50}
           height={600}
@@ -103,10 +116,11 @@ export default class extends Component {
                             type="text"
                             value={this.state.filter[columnName] || ''}
                             onChange={evt => this.updateFilter(columnName, evt.target.value)}
+                            style={{ width: '90%', marginRight: 2, }}
                           />
                           <div style={{ display: 'inline-block'}}>
-                            <span className="control" onClick={() => this.sortByColumn(columnName)}>{'<'}</span>
-                            <span className="control" onClick={() => this.sortByColumn(columnName, 'desc')}>{'>'}</span>
+                            <span className="control" onClick={() => this.sortByColumn(columnName)}>{'▲'}</span>
+                            <span className="control" onClick={() => this.sortByColumn(columnName, 'desc')}>{'▼'}</span>
                           </div>
                         </div>
                       </CustomHeader>
