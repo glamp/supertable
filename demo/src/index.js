@@ -45,6 +45,12 @@ class Demo extends Component {
   render() {
     return (
       <div>
+        <a href="https://github.com/you">
+          <img style={{ position: 'absolute', top: 0, right: 0, border: 0 }}
+            src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+            alt="Fork me on GitHub" />
+        </a>
+        <br />
         <h2>SuperTable</h2>
         <h4>
           {
