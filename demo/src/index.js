@@ -8,7 +8,17 @@ import './index.css';
 
 class Demo extends Component {
   state = {
-    n: _.parseInt(window.location.pathname.slice(1)) || 10 * 1000
+    n: _.parseInt(this.getParameterByName('n')) || 10 * 1000
+  }
+
+  getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
   getData() {
@@ -57,7 +67,7 @@ class Demo extends Component {
             [100, 1000, 10000, 100000].map((i) => {
               return (
                 <span>
-                  <a href={`/${i}`}>
+                  <a href={`?n=${i}`}>
                     {this.formatNumber(i)}
                   </a>
                   {' '}
